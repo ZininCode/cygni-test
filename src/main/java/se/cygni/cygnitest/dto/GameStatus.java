@@ -1,4 +1,4 @@
-package se.cygni.cygnitest.rest.api;
+package se.cygni.cygnitest.dto;
 
 /**
  * Date: 07.07.2022
@@ -6,7 +6,7 @@ package se.cygni.cygnitest.rest.api;
  * @author Nikolay Zinin (nikolay.zinin@gmail.com)
  */
 public enum GameStatus {
-    CREATED,
+    FINISHED,
     IN_PROGRESS,
     HAS_WINNER,
     DRAW

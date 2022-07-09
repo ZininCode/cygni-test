@@ -11,9 +11,9 @@ import java.util.UUID;
  * @author Nikolay Zinin (nikolay.zinin@gmail.com)
  */
 @Getter
-public class GameNotInProgressException extends GameException {
+public class GameAlreadyFinishedException extends GameException {
     private String descriptionMessage;
-    public GameNotInProgressException(UUID gameId, String descriptionMessage) {
+    public GameAlreadyFinishedException(UUID gameId, String descriptionMessage) {
         super(gameId);
         this.descriptionMessage = descriptionMessage;
     }

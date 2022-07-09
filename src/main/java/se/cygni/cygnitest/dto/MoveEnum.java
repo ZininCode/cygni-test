@@ -1,4 +1,4 @@
-package se.cygni.cygnitest.rest.api;
+package se.cygni.cygnitest.dto;
 
 /**
  * Date: 07.07.2022

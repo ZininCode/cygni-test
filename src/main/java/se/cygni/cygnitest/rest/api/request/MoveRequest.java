@@ -2,8 +2,7 @@ package se.cygni.cygnitest.rest.api.request;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import se.cygni.cygnitest.rest.api.MoveEnum;
+import se.cygni.cygnitest.dto.MoveEnum;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -15,7 +14,7 @@ import javax.validation.constraints.NotNull;
  */
 @Getter
 @Setter
-@ToString
+
 public class MoveRequest {
     @NotEmpty
     private String playerName;

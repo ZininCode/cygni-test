@@ -1,10 +1,8 @@
-package se.cygni.cygnitest.rest.api.response;
+package se.cygni.cygnitest.dto;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import se.cygni.cygnitest.rest.api.GameStatus;
 
 import java.util.UUID;
 
@@ -16,7 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@ToString
+
 public class GameResultResponse {
     private UUID gameId;
     private GameStatus status;

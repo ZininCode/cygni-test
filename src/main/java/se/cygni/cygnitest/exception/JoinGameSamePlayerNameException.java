@@ -11,10 +11,13 @@ import java.util.UUID;
  * @author Nikolay Zinin (nikolay.zinin@gmail.com)
  */
 @Getter
-public class GameNotInProgressException extends GameException {
+public class JoinGameSamePlayerNameException extends GameException {
+    private String playerName;
     private String descriptionMessage;
-    public GameNotInProgressException(UUID gameId, String descriptionMessage) {
+
+    public JoinGameSamePlayerNameException(UUID gameId, String playerName, String descriptionMessage) {
         super(gameId);
+        this.playerName = playerName;
         this.descriptionMessage = descriptionMessage;
     }
 }

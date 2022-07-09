@@ -3,8 +3,7 @@ package se.cygni.cygnitest.helper;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
-import se.cygni.cygnitest.rest.api.MoveEnum;
+import se.cygni.cygnitest.dto.MoveEnum;
 
 /**
  * Date: 07.07.2022
@@ -14,7 +13,7 @@ import se.cygni.cygnitest.rest.api.MoveEnum;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode
-@ToString
+
 public class MovePair {
     private MoveEnum move1;
     private MoveEnum move2;

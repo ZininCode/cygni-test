@@ -1,7 +1,7 @@
 package se.cygni.cygnitest.helper;
 
 import org.springframework.stereotype.Component;
-import se.cygni.cygnitest.rest.api.MoveEnum;
+import se.cygni.cygnitest.dto.MoveEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class GameResultHelper {
         PAIR_RESULT_MAP.put(new MovePair(MoveEnum.SCISSORS, MoveEnum.PAPER), true);
     }
 
-    public boolean test(MoveEnum player1Move, MoveEnum player2Move) {
+    public boolean matchResult(MoveEnum player1Move, MoveEnum player2Move) {
         return PAIR_RESULT_MAP.get(new MovePair(player1Move, player2Move));
     }
 }

@@ -1,9 +1,9 @@
 package se.cygni.cygnitest.repository;
 
 import org.springframework.stereotype.Repository;
+import se.cygni.cygnitest.dto.GameStatus;
+import se.cygni.cygnitest.dto.MoveEnum;
 import se.cygni.cygnitest.model.Game;
-import se.cygni.cygnitest.rest.api.GameStatus;
-import se.cygni.cygnitest.rest.api.MoveEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,22 +24,19 @@ public class GameRepository {
     private final Map<UUID, Game> gameMap = new HashMap<>();
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
-
     public void addGame(Game game) {
         doInWriteLock(() -> gameMap.put(game.getId(), game));
     }
 
-    public synchronized Optional<Game> findGame(UUID id) { //
-       // Game game = doInReadLock(() -> gameMap.get(id));//this is not working (returns null second time of use. I guess it locks and not unlocks.
-        // Then I do not know how to unlock in this way with doInReadLock(() -> constructs. I can change it to something else but it will look massive
-        // so easier just synchronized
-        Game game = gameMap.get(id);
 
+    public Optional<Game> findGame(UUID id) {
+        Game game = doInReadLock(() -> gameMap.get(id));
         if (game == null) {
             return Optional.empty();
         }
         return Optional.of(game);
     }
+
 
     public void addPlayerToGame(UUID id, String playerName) {
         doInWriteLock(() -> {
@@ -104,14 +101,13 @@ public class GameRepository {
     }
 
     private <T> T doInReadLock(Supplier<T> supplier) {
-        Lock writeLock = readWriteLock.writeLock();
+        Lock readLock = readWriteLock.writeLock();
         try {
-            writeLock.lock();
+            readLock.lock();
 
             return supplier.get();
         } finally {
-            writeLock.unlock();
+            readLock.unlock();
         }
     }
-
 }

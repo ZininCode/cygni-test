@@ -13,7 +13,7 @@ import javax.validation.constraints.NotEmpty;
  */
 @Getter
 @Setter
-@ToString
+
 public class CreateGameRequest {
     @NotEmpty
     private String playerName;

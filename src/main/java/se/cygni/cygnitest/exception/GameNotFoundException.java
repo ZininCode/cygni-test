@@ -1,5 +1,6 @@
 package se.cygni.cygnitest.exception;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.UUID;
@@ -11,7 +12,11 @@ import java.util.UUID;
  */
 @Getter
 public class GameNotFoundException extends GameException {
-    public GameNotFoundException(UUID gameId) {
+    private String descriptionMessage;
+
+    public GameNotFoundException(UUID gameId, String descriptionMessage ) {
         super(gameId);
+        this.descriptionMessage = descriptionMessage;
     }
 }
+

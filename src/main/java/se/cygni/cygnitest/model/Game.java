@@ -3,9 +3,8 @@ package se.cygni.cygnitest.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import se.cygni.cygnitest.rest.api.GameStatus;
-import se.cygni.cygnitest.rest.api.MoveEnum;
+import se.cygni.cygnitest.dto.GameStatus;
+import se.cygni.cygnitest.dto.MoveEnum;
 
 import java.util.UUID;
 
@@ -16,7 +15,7 @@ import java.util.UUID;
  */
 @Getter
 @Setter
-@ToString
+
 @Builder
 public class Game {
     private UUID id;

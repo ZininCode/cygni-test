@@ -13,5 +13,5 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 public class GameException extends Exception {
-    private final UUID gameId;
+    private UUID gameId;
 }
