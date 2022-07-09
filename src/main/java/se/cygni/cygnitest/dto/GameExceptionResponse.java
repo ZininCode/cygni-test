@@ -10,6 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
+
 public class GameExceptionResponse {
     private int statusCode;
     private Date timestamp;

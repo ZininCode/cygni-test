@@ -1,8 +1,10 @@
 package se.cygni.cygnitest.service;
 
-import se.cygni.cygnitest.exception.*;
-import se.cygni.cygnitest.model.Game;
 import se.cygni.cygnitest.dto.MoveEnum;
+import se.cygni.cygnitest.exception.GameNotFoundException;
+import se.cygni.cygnitest.exception.GameNotInProgressException;
+import se.cygni.cygnitest.exception.PlayerAlreadyMadeMoveException;
+import se.cygni.cygnitest.model.Game;
 
 import java.util.UUID;
 
