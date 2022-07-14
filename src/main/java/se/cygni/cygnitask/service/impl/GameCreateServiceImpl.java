@@ -8,8 +8,6 @@ import se.cygni.cygnitask.exception.GameAlreadyFinishedException;
 import se.cygni.cygnitask.exception.GameNotFoundException;
 import se.cygni.cygnitask.exception.JoinFullGameException;
 import se.cygni.cygnitask.exception.JoinGameSamePlayerNameException;
-import se.cygni.cygnitask.helper.GameResultHelper;
-import se.cygni.cygnitask.mapper.GameMapper;
 import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.repository.GameRepository;
 import se.cygni.cygnitask.service.GameCreateService;
@@ -28,6 +26,12 @@ import java.util.UUID;
 public class GameCreateServiceImpl implements GameCreateService {
     private final GameRepository repository;
 
+    /**
+     * Creates a new game, assigns initial parameters in the game, saves the game in game repository and returns game's id.
+     *
+     * @param playerName: Name of the player who creates the game.
+     * @return id of the created game.
+     */
     @Override
     public UUID createGame(String playerName) {
         Game game = Game.builder()
@@ -41,6 +45,16 @@ public class GameCreateServiceImpl implements GameCreateService {
         return game.getId();
     }
 
+    /**
+     * Another player joins the game.
+     *
+     * @param gameId id of the game used to find the game in the game repository.
+     * @param playerName Name of the second player in the game.
+     * @throws GameNotFoundException If there is no game with given id found in the game repository.
+     * @throws JoinGameSamePlayerNameException If the game has already the player with this name.
+     * @throws GameAlreadyFinishedException If the game have already finished.
+     * @throws JoinFullGameException If the game have already two players set.
+     */
 
     @Override
     public void joinGame(UUID gameId, String playerName) throws GameNotFoundException, JoinGameSamePlayerNameException, GameAlreadyFinishedException, JoinFullGameException {
