@@ -27,16 +27,13 @@ class GamePlayServiceImplTest {
     @Mock
     private GameRepository repository;
     private GamePlayService gamePlayService;
-    private GameResolver gameResolver;
-    private GameMapper gameMapper;
-    private GameResultHelper gameResultHelper;
 
     @BeforeEach
     public void initService() {
-        gameResultHelper = new GameResultHelper();
-        gameMapper = new GameMapperImpl();
+        GameResultHelper gameResultHelper = new GameResultHelper();
+        GameMapper gameMapper = new GameMapperImpl();
         repository = new GameRepository();
-        gameResolver = new GameResolver(repository, gameResultHelper);
+        GameResolver gameResolver = new GameResolver(repository, gameResultHelper);
         gamePlayService = new GamePlayServiceImpl(repository, gameResolver, gameMapper);
     }
 
