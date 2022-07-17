@@ -15,5 +15,5 @@ import javax.validation.constraints.NotEmpty;
 
 public class CreateGameRequest {
     @NotEmpty
-    private String playerName;
+    private String name;
 }

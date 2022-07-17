@@ -1,13 +1,9 @@
 package se.cygni.cygnitask.repository;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import se.cygni.cygnitask.exception.GameNotFoundException;
-import se.cygni.cygnitask.helper.GameResultHelper;
 import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.rest.api.response.GameStatus;
 import se.cygni.cygnitask.rest.api.response.MoveEnum;
@@ -19,22 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameRepositoryTest {
 
-    @InjectMocks
-    private GameRepository repository;
-    private GameResultHelper gameResultHelper;
-
     @Mock
-    private AutoCloseable closeable;
+    private GameRepository repository;
 
     @BeforeEach
     public void initService() {
-        gameResultHelper = new GameResultHelper();
-        closeable = MockitoAnnotations.openMocks(this);
-    }
-
-    @AfterEach
-    void tearDown() throws Exception {
-        closeable.close();
+        repository = new GameRepository();
     }
 
     @Test

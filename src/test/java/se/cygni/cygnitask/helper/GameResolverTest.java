@@ -1,41 +1,32 @@
 package se.cygni.cygnitask.helper;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.repository.GameRepository;
 import se.cygni.cygnitask.rest.api.response.GameStatus;
 import se.cygni.cygnitask.rest.api.response.MoveEnum;
 
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GameResolverTest {
 
-    @InjectMocks
+    @Mock
     private GameRepository repository;
     private GameResolver gameResolver;
-    private GameResultHelper gameResultHelper;
 
     @Mock
     private AutoCloseable closeable;
 
     @BeforeEach
     public void initService() {
-        gameResultHelper = new GameResultHelper();
-        closeable = MockitoAnnotations.openMocks(this);
+        repository = new GameRepository();
+        GameResultHelper gameResultHelper = new GameResultHelper();
         gameResolver = new GameResolver(repository, gameResultHelper);
     }
 
-    @AfterEach
-    void tearDown()  throws Exception {
-        closeable.close();
-    }
     @Test
     void resolveGameWhenOnePlayerWins() {
         UUID gameId = UUID.randomUUID();
@@ -52,7 +43,7 @@ class GameResolverTest {
 
         repository.addGame(game);
         gameResolver.resolveGame(game);
-        assertTrue(game.getStatus().equals(GameStatus.HAS_WINNER));
+        assertEquals(game.getStatus(), GameStatus.HAS_WINNER);
     }
 
     @Test
@@ -71,6 +62,6 @@ class GameResolverTest {
 
         repository.addGame(game);
         gameResolver.resolveGame(game);
-        assertTrue(game.getStatus().equals(GameStatus.DRAW));
+        assertEquals(game.getStatus(), GameStatus.DRAW);
     }
 }

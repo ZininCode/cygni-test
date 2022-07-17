@@ -1,12 +1,8 @@
 package se.cygni.cygnitask.service.impl;
 
-import org.apache.catalina.mapper.Mapper;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import se.cygni.cygnitask.dto.GameDto;
 import se.cygni.cygnitask.exception.GameNotFoundException;
 import se.cygni.cygnitask.exception.GameNotInProgressException;
@@ -28,28 +24,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GamePlayServiceImplTest {
 
-    @InjectMocks
+    @Mock
     private GameRepository repository;
     private GamePlayService gamePlayService;
     private GameResolver gameResolver;
     private GameMapper gameMapper;
     private GameResultHelper gameResultHelper;
 
-    @Mock
-    private AutoCloseable closeable;
-
     @BeforeEach
     public void initService() {
         gameResultHelper = new GameResultHelper();
         gameMapper = new GameMapperImpl();
-        closeable = MockitoAnnotations.openMocks(this);
+        repository = new GameRepository();
         gameResolver = new GameResolver(repository, gameResultHelper);
         gamePlayService = new GamePlayServiceImpl(repository, gameResolver, gameMapper);
-
-    }
-    @AfterEach
-    void tearDown()  throws Exception {
-        closeable.close();
     }
 
     @Test
@@ -82,6 +70,7 @@ class GamePlayServiceImplTest {
         gamePlayService.makeMove(gameId, "Cat", MoveEnum.ROCK);
         assertEquals(game.getPlayer2Move(), MoveEnum.ROCK);
     }
+
     @Test
     void player2MakesSecondMoveSolveGameTest()
             throws GameNotFoundException, PlayerAlreadyMadeMoveException, GameNotInProgressException {
@@ -114,7 +103,7 @@ class GamePlayServiceImplTest {
 
         repository.addGame(game);
         GameDto response = gamePlayService.getGameResult(gameId);
-        assertTrue(response.getStatus().equals(GameStatus.IN_PROGRESS));
+        assertEquals(response.getStatus(), GameStatus.IN_PROGRESS);
     }
 
     @Test
@@ -133,6 +122,6 @@ class GamePlayServiceImplTest {
 
         repository.addGame(game);
         GameDto response = gamePlayService.getGameResult(gameId);
-        assertTrue(response.getStatus().equals(GameStatus.HAS_WINNER));
+        assertEquals(response.getStatus(), GameStatus.HAS_WINNER);
     }
 }

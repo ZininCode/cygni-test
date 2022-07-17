@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 public class MoveRequest {
     @NotEmpty
-    private String playerName;
+    private String name;
     @NotNull
     private MoveEnum move;
 }

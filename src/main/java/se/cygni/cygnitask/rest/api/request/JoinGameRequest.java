@@ -14,5 +14,5 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 public class JoinGameRequest {
     @NotEmpty
-    private String playerName;
+    private String name;
 }

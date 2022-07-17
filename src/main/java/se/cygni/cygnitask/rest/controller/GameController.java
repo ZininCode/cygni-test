@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import se.cygni.cygnitask.dto.GameDto;
-import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.exception.*;
 import se.cygni.cygnitask.mapper.GameMapper;
 import se.cygni.cygnitask.rest.api.request.CreateGameRequest;
@@ -36,19 +35,19 @@ public class GameController {
 
     @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE)
     public GameCreateResponse create(@RequestBody @Valid CreateGameRequest request) {
-        UUID gameId = gameCreateService.createGame(request.getPlayerName());
+        UUID gameId = gameCreateService.createGame(request.getName());
 
         return GameCreateResponse.builder().gameId(gameId).build();
     }
 
     @PostMapping(path = "/{gameId}/join", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void join(@PathVariable("gameId") UUID gameId, @RequestBody @Valid JoinGameRequest request) throws JoinGameSamePlayerNameException, GameNotFoundException, GameAlreadyFinishedException, JoinFullGameException {
-        gameCreateService.joinGame(gameId, request.getPlayerName());
+        gameCreateService.joinGame(gameId, request.getName());
     }
 
     @PostMapping(path = "/{gameId}/move", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void join(@PathVariable("gameId") UUID gameId, @RequestBody @Valid MoveRequest request) throws GameNotInProgressException, GameNotFoundException, PlayerAlreadyMadeMoveException {
-        gamePlayService.makeMove(gameId, request.getPlayerName(), request.getMove());
+        gamePlayService.makeMove(gameId, request.getName(), request.getMove());
     }
 
     @GetMapping(path = "/{gameId}")

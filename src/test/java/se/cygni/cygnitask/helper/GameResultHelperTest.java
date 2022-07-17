@@ -20,12 +20,12 @@ class GameResultHelperTest {
 
     @Test
     void matchResultFirstMoveWinsTest() {
-        Boolean rockPaper = gameResultHelper.matchResult(MoveEnum.ROCK, MoveEnum.PAPER);
-        Boolean rockScissors = gameResultHelper.matchResult(MoveEnum.ROCK, MoveEnum.SCISSORS);
-        Boolean paperRock = gameResultHelper.matchResult(MoveEnum.PAPER, MoveEnum.ROCK);
-        Boolean paperScissors = gameResultHelper.matchResult(MoveEnum.PAPER, MoveEnum.SCISSORS);
-        Boolean scissorsRock = gameResultHelper.matchResult(MoveEnum.SCISSORS, MoveEnum.ROCK);
-        Boolean scissorsPaper = gameResultHelper.matchResult(MoveEnum.SCISSORS, MoveEnum.PAPER);
+        boolean rockPaper = gameResultHelper.matchResult(MoveEnum.ROCK, MoveEnum.PAPER);
+        boolean rockScissors = gameResultHelper.matchResult(MoveEnum.ROCK, MoveEnum.SCISSORS);
+        boolean paperRock = gameResultHelper.matchResult(MoveEnum.PAPER, MoveEnum.ROCK);
+        boolean paperScissors = gameResultHelper.matchResult(MoveEnum.PAPER, MoveEnum.SCISSORS);
+        boolean scissorsRock = gameResultHelper.matchResult(MoveEnum.SCISSORS, MoveEnum.ROCK);
+        boolean scissorsPaper = gameResultHelper.matchResult(MoveEnum.SCISSORS, MoveEnum.PAPER);
         assertTrue(rockScissors);
         assertTrue(paperRock);
         assertTrue(scissorsPaper);
@@ -33,5 +33,4 @@ class GameResultHelperTest {
         assertFalse(paperScissors);
         assertFalse(scissorsRock);
     }
-
 }
