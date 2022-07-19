@@ -2,15 +2,16 @@ package se.cygni.cygnitask.rest.api.request;
 
 import lombok.Getter;
 import lombok.Setter;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
+ * A request with a player name amd a move.
  * Date: 07.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Getter
 @Setter

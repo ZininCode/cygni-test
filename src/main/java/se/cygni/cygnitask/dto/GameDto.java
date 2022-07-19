@@ -3,12 +3,16 @@ package se.cygni.cygnitask.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
 
 
 import java.util.UUID;
-
+/**
+ * DTO from Game mapped to get data and transfer to controller.
+ * Date: 08.07.2022
+ *
+ * @author Nikolay Zinin
+ */
 
 @Getter
 @Setter

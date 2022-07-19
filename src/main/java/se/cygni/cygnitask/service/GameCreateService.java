@@ -4,14 +4,16 @@ import se.cygni.cygnitask.exception.*;
 import java.util.UUID;
 
 /**
+ * Create a game and two players join the game.
+ *
  * Date: 07.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 public interface GameCreateService {
 
     /**
-     * Creates a new game, assigns initial parameters in the game, saves the game in game repository and returns game's id.
+     * Create a new game, assign initial parameters in the game, save the game in game repository and return game's id.
      *
      * @param playerName: Name of the player who creates the game.
      * @return id of the created game.
@@ -25,9 +27,9 @@ public interface GameCreateService {
      * @param playerName Name of the second player in the game.
      * @throws GameNotFoundException If there is no game with given id found in the game repository.
      * @throws JoinGameSamePlayerNameException If the game has already the player with this name.
-     * @throws GameAlreadyFinishedException If the game have already finished.
+     * @throws GameNotInProgressException If the game have already finished.
      * @throws JoinFullGameException If the game have already two players set.
      */
-    void joinGame(UUID gameId, String playerName) throws GameNotFoundException, JoinGameSamePlayerNameException, GameAlreadyFinishedException, JoinFullGameException;
+    void joinGame(UUID gameId, String playerName) throws GameNotFoundException, JoinGameSamePlayerNameException, JoinFullGameException, GameNotInProgressException;
 
 }

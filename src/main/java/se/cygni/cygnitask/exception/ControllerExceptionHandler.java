@@ -5,17 +5,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-import se.cygni.cygnitask.rest.api.response.GamePlayerExceptionResponse;
+import se.cygni.cygnitask.rest.api.response.GameExceptionResponse;
 import se.cygni.cygnitask.rest.api.response.GameExceptionResponse;
 import java.util.Date;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
-
-@ControllerAdvice
 /**
+ * Handle exception to give a response which will be presented in JSON when exception is thrown.
+ * Date: 10.07.2022
  *
- *
+ * @author Nikolay Zinin
  */
+@ControllerAdvice
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(GameNotFoundException.class)
@@ -45,20 +46,6 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<>(response, FORBIDDEN);
     }
 
-    @ExceptionHandler(GameAlreadyFinishedException.class)
-    public ResponseEntity<GameExceptionResponse> gameAlreadyFinishedException(GameAlreadyFinishedException ex, WebRequest request) {
-        GameExceptionResponse response = GameExceptionResponse
-                .builder()
-                .statusCode(HttpStatus.FORBIDDEN.value())
-                .timestamp(new Date())
-                .gameUuid(ex.getGameId())
-                .path(request.getDescription(false))
-                .descriptionMessage(ex.getDescriptionMessage())
-                .build();
-
-        return new ResponseEntity<>(response, FORBIDDEN);
-    }
-
     @ExceptionHandler(GameNotInProgressException.class)
     public ResponseEntity<GameExceptionResponse> gameNotInProgressException(GameNotInProgressException ex, WebRequest request) {
         GameExceptionResponse response = GameExceptionResponse
@@ -73,27 +60,25 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(JoinGameSamePlayerNameException.class)
-    public ResponseEntity<GamePlayerExceptionResponse> joinGameException(JoinGameSamePlayerNameException ex, WebRequest request) {
-        GamePlayerExceptionResponse response = GamePlayerExceptionResponse
+    public ResponseEntity<GameExceptionResponse> joinGameException(JoinGameSamePlayerNameException ex, WebRequest request) {
+        GameExceptionResponse response = GameExceptionResponse
                 .builder()
                 .statusCode(FORBIDDEN.value())
                 .timestamp(new Date())
                 .gameUuid(ex.getGameId())
-                .playerName(ex.getPlayerName())
                 .path(request.getDescription(false))
                 .descriptionMessage(ex.getDescriptionMessage())
                 .build();
-        return new ResponseEntity<GamePlayerExceptionResponse>(response, HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(PlayerAlreadyMadeMoveException.class)
-    public ResponseEntity<GamePlayerExceptionResponse> playerAlreadyMakeMoveException(PlayerAlreadyMadeMoveException ex, WebRequest request) {
-        GamePlayerExceptionResponse response = GamePlayerExceptionResponse
+    public ResponseEntity<GameExceptionResponse> playerAlreadyMakeMoveException(PlayerAlreadyMadeMoveException ex, WebRequest request) {
+        GameExceptionResponse response = GameExceptionResponse
                 .builder()
                 .statusCode(FORBIDDEN.value())
                 .timestamp(new Date())
                 .gameUuid(ex.getGameId())
-                .playerName(ex.getPlayerName())
                 .path(request.getDescription(false))
                 .descriptionMessage(ex.getDescriptionMessage())
                 .build();

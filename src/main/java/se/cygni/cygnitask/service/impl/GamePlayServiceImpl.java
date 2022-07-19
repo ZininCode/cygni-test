@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import se.cygni.cygnitask.dto.GameDto;
 import se.cygni.cygnitask.helper.GameResolver;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 import se.cygni.cygnitask.exception.GameNotFoundException;
 import se.cygni.cygnitask.exception.GameNotInProgressException;
 import se.cygni.cygnitask.exception.PlayerAlreadyMadeMoveException;
@@ -20,7 +20,7 @@ import java.util.UUID;
 /**
  * Date: 07.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Service
 @AllArgsConstructor
@@ -50,7 +50,7 @@ public class GamePlayServiceImpl implements GamePlayService {
                 throw new GameNotFoundException(gameId, "Game not found");
             }
         } catch (IllegalStateException e) {
-            throw new PlayerAlreadyMadeMoveException(gameId, playerName, "The player have already made a move");
+            throw new PlayerAlreadyMadeMoveException(gameId, "The player "+ playerName+ "  have already made a move");
         }
 
         if (game.getPlayer1Move() != null && game.getPlayer2Move() != null) {

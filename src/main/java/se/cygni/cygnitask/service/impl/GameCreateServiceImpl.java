@@ -3,11 +3,8 @@ package se.cygni.cygnitask.service.impl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
-import se.cygni.cygnitask.exception.GameAlreadyFinishedException;
-import se.cygni.cygnitask.exception.GameNotFoundException;
-import se.cygni.cygnitask.exception.JoinFullGameException;
-import se.cygni.cygnitask.exception.JoinGameSamePlayerNameException;
+import se.cygni.cygnitask.exception.*;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
 import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.repository.GameRepository;
 import se.cygni.cygnitask.service.GameCreateService;
@@ -17,7 +14,7 @@ import java.util.UUID;
 /**
  * Date: 07.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Service
 @AllArgsConstructor
@@ -42,12 +39,12 @@ public class GameCreateServiceImpl implements GameCreateService {
 
 
     @Override
-    public void joinGame(UUID gameId, String playerName) throws GameNotFoundException, JoinGameSamePlayerNameException, GameAlreadyFinishedException, JoinFullGameException {
+    public void joinGame(UUID gameId, String playerName) throws GameNotFoundException, JoinGameSamePlayerNameException, GameNotInProgressException, JoinFullGameException {
         Game game = repository.findGame(gameId).orElseThrow(() -> new GameNotFoundException(gameId, "Game not found"));
 
         if (game.getPlayer1().equals(playerName)) {
             log.debug("Player {} already in game {}", playerName, gameId);
-            throw new JoinGameSamePlayerNameException(gameId, playerName, "The game has already the player with this name");
+            throw new JoinGameSamePlayerNameException(gameId, "The game has already the player with this name" +playerName);
         }
 
         if (game.getPlayer2() != null) {
@@ -57,7 +54,7 @@ public class GameCreateServiceImpl implements GameCreateService {
 
         if (!game.getStatus().equals(GameStatus.IN_PROGRESS)) {
             log.debug("Game {} already finished", gameId);
-            throw new GameAlreadyFinishedException(gameId, "The game have already finished");
+            throw new GameNotInProgressException (gameId, "The game have already finished");
         }
 
         repository.addPlayerToGame(gameId, playerName);

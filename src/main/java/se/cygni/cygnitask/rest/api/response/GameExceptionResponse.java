@@ -7,6 +7,12 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * A response in case of exception.
+ * Date: 07.07.2022
+ *
+ * @author Nikolay Zinin
+ */
 @Getter
 @Setter
 @Builder

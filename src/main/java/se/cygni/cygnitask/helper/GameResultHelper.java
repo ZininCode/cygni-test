@@ -1,15 +1,16 @@
 package se.cygni.cygnitask.helper;
 
 import org.springframework.stereotype.Component;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Date: 07.07.2022
+ * Help to define game result for all 6 different combinations ROCK, PAPER and SCISSORS of move pairs.
+ * Date: 08.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Component
 public class GameResultHelper {

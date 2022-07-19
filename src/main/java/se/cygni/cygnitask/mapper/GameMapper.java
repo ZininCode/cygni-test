@@ -8,9 +8,10 @@ import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.rest.api.response.GameResultResponse;
 
 /**
+ * Map Game into DT in repository and DTO to response in controller.
  * Date: 08.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Mapper
 public interface GameMapper {

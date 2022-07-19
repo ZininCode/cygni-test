@@ -3,11 +3,16 @@ package se.cygni.cygnitask.helper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Date: 15.07.2022
+ *
+ * @author Nikolay Zinin
+ */
 class GameResultHelperTest {
 
     @Mock

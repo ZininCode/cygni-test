@@ -6,9 +6,10 @@ import lombok.Setter;
 import javax.validation.constraints.NotEmpty;
 
 /**
+ * A request with the second player name.
  * Date: 07.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Getter
 @Setter

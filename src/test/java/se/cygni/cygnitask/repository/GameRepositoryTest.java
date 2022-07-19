@@ -5,14 +5,19 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import se.cygni.cygnitask.exception.GameNotFoundException;
 import se.cygni.cygnitask.model.Game;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Date: 15.07.2022
+ *
+ * @author Nikolay Zinin
+ */
 class GameRepositoryTest {
 
     @Mock

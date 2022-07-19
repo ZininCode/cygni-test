@@ -3,19 +3,24 @@ package se.cygni.cygnitask.service.impl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import se.cygni.cygnitask.exception.GameAlreadyFinishedException;
+import se.cygni.cygnitask.exception.GameNotInProgressException;
 import se.cygni.cygnitask.exception.GameNotFoundException;
 import se.cygni.cygnitask.exception.JoinFullGameException;
 import se.cygni.cygnitask.exception.JoinGameSamePlayerNameException;
 import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.repository.GameRepository;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
 import se.cygni.cygnitask.service.GameCreateService;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Date: 15.07.2022
+ *
+ * @author Nikolay Zinin
+ */
 class GameCreateServiceImplTest {
     @Mock
     private GameCreateService gameCreateService;
@@ -36,7 +41,7 @@ class GameCreateServiceImplTest {
     }
 
     @Test
-    void joinGameAndControlPlayerNameTest() throws GameNotFoundException, JoinFullGameException, GameAlreadyFinishedException, JoinGameSamePlayerNameException {
+    void joinGameAndControlPlayerNameTest() throws GameNotFoundException, JoinFullGameException, GameNotInProgressException, JoinGameSamePlayerNameException {
         UUID gameId = gameCreateService.createGame("Bob");
         Game game = repository.findGame(gameId).orElseThrow(() -> new GameNotFoundException(gameId, "Game not found"));
         gameCreateService.joinGame(gameId, "Cat");

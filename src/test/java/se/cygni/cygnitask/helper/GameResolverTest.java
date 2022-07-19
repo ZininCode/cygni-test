@@ -5,12 +5,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.repository.GameRepository;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Date: 15.07.2022
+ *
+ * @author Nikolay Zinin
+ */
 class GameResolverTest {
 
     @Mock

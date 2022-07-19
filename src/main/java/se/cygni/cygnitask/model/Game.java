@@ -3,15 +3,16 @@ package se.cygni.cygnitask.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 
 import java.util.UUID;
 
 /**
+ * The game class.
  * Date: 07.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Getter
 @Setter

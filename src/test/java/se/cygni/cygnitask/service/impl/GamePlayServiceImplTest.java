@@ -13,8 +13,8 @@ import se.cygni.cygnitask.mapper.GameMapper;
 import se.cygni.cygnitask.mapper.GameMapperImpl;
 import se.cygni.cygnitask.model.Game;
 import se.cygni.cygnitask.repository.GameRepository;
-import se.cygni.cygnitask.rest.api.response.GameStatus;
-import se.cygni.cygnitask.rest.api.response.MoveEnum;
+import se.cygni.cygnitask.rest.api.gameenum.GameStatus;
+import se.cygni.cygnitask.rest.api.gameenum.MoveEnum;
 import se.cygni.cygnitask.service.GamePlayService;
 
 import java.util.UUID;
@@ -22,6 +22,11 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Date: 15.07.2022
+ *
+ * @author Nikolay Zinin
+ */
 class GamePlayServiceImplTest {
 
     @Mock

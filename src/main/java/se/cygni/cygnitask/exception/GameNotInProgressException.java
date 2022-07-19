@@ -5,9 +5,9 @@ import lombok.Getter;
 import java.util.UUID;
 
 /**
- * Date: 07.07.2022
+ * Date: 10.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Getter
 public class GameNotInProgressException extends GameException {

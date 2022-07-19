@@ -9,9 +9,10 @@ import se.cygni.cygnitask.repository.GameRepository;
 
 
 /**
- * Date: 07.07.2022
+ * Resolve the game result when both of the players mke their moves and return game result a draw or a winner.
+ * Date: 11.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Component
 @AllArgsConstructor

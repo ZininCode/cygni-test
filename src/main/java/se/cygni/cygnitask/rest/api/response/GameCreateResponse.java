@@ -7,9 +7,10 @@ import lombok.Setter;
 import java.util.UUID;
 
 /**
+ * A response with the game id.
  * Date: 07.07.2022
  *
- * @author Nikolay Zinin (nikolay.zinin@gmail.com)
+ * @author Nikolay Zinin
  */
 @Getter
 @Setter
