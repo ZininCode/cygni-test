@@ -29,7 +29,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 class GamePlayServiceImplTest {
 
-    @Mock
     private GameRepository repository;
     private GamePlayService gamePlayService;
 

@@ -17,12 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class GameResolverTest {
 
-    @Mock
     private GameRepository repository;
     private GameResolver gameResolver;
-
-    @Mock
-    private AutoCloseable closeable;
 
     @BeforeEach
     public void initService() {

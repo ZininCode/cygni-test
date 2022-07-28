@@ -3,8 +3,8 @@ package se.cygni.cygnitask.service.impl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import se.cygni.cygnitask.exception.GameNotInProgressException;
 import se.cygni.cygnitask.exception.GameNotFoundException;
+import se.cygni.cygnitask.exception.GameNotInProgressException;
 import se.cygni.cygnitask.exception.JoinFullGameException;
 import se.cygni.cygnitask.exception.JoinGameSamePlayerNameException;
 import se.cygni.cygnitask.model.Game;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Nikolay Zinin
  */
 class GameCreateServiceImplTest {
-    @Mock
+
     private GameCreateService gameCreateService;
     private GameRepository repository;
 
